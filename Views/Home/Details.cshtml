@@ -1,0 +1,28 @@
+﻿@model Tour.Models.Upcoming 
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<h4 class="mb-4 mt-4 text-black-50 text-capitalize text-center"> City  Name: @Model.Name</h4>
+<br />
+<br />
+<div class="row">
+    <div class="col-md-6 col-md-6 col-lg-4 m-4">
+        <img src="@Model.Image" alt="Single_product_Image" class="img-thumbnail images_details" />
+    </div>
+    <br />
+    <div class="col-md-6 col-md-6 col-lg-6 m-4">
+        <p class="text-black-50">@Model.Description</p>
+        <div class="footer-content">
+            <p class="text-black-50">City ID : @Model.Id</p>
+            <p class="text-black-50"> Location ID : @Model.LocationId</p>
+            <p class="text-black-50">City Location :  @Model.Location.Continent</p>
+        </div>
+        <div class="footer-content">
+            <span class="text-black-50">@Model.EventDate.Date</span>
+            <br />
+            <a class="btn btn-outline-danger" asp-route-productId="@Model.Id">Attend</a> |
+            <a class="btn btn-dark" asp-action="Index" asp-controller="cities"> Back </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Tour.Models.City>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="text-black-50 footer-content">
+    <div>
+        <form asp-action="Index" method="get">
+            <div class="form-actions no-color">
+                <p>
+                    Find by name: <input type="text" name="SearchString" placeholder="Search City" value="@ViewData["CurrentFilter"]" />
+                </p>
+            </div>
+        </form>
+    </div>
+    <div>
+        <input type="submit" value="Search" class="btn btn-default" /> |
+        <a asp-action="Index">Back to Full List</a>
+    </div>
+</div>
+
+<hr />
+
+<div class="card-columns">
+    @foreach (var item in Model)
+    {
+    <div class="card">
+        <a  asp-controller="Cities"  asp-action="Details" asp-route-id="@item.Id">
+            <div class="card-img" style="background-image: url('@item.Image');"></div>
+        </a>
+            <div class="card-body">
+                <h5 class="card-title">@item.Name</h5>
+            </div>
+  
+        <div class="card-footer">
+            <div class="footer-content">
+                <p>
+                    <span>Event Due</span>
+                </p>
+                <span>
+                    @item.EventDate
+                </span>
+            </div>
+        </div>
+    </div>
+    }
+</div>
